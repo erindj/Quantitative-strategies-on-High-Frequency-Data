@@ -1,0 +1,238 @@
+---
+title: "Quantitative strategies on High Frequency Data"
+subtitle: "Research project -- PRESENTATION"
+author: "Team members: Erind Jasini"
+date: "academic year 2021/2022"
+output: 
+  revealjs::revealjs_presentation:
+    incremental: true
+    theme: blood
+    center: true
+    transition: zoom
+    reveal_options:
+      slideNumber: true
+fontsize: 12pt
+---
+
+<!-- this format requires PRIOR installation
+of the revealjs package in R console
+
+install.packages("revealjs")
+
+You can find more options here:
+http://rmarkdown.rstudio.com/revealjs_presentation_format.html
+
+-->
+
+## Project Definitions
+
+The assumption for the trading strategies was to not hold positions during the breaks and during some periods before and after the breaks, 
+
+Another condition for this project was to apply the same strategy (the same entry/exit technique and parameters) for a particular group of assets in each quarter. In this case i applied the double single moving average on the first group of assets.
+
+For each group of assets we had to aggregate the strategy P&Ls to daily and based on daily results calculate the following measures (separately for each quarter): gross SR, net SR, gross cumP&L – cumulative, net cumP&L – cumulative, av.ntrades.
+
+
+## Finally selected strategy for **group 1**
+
+* For the **group 1** i selected mean reverting volatility breakout model as this strategy works well to take a position within a trend early stages.The first step in trading breakouts is to identify current price trend patterns along with support and resistance levels in order to plan possible entry and exit points.
+
+* When trading breakouts, it is important to consider the underlying stock's support and resistance levels. The more times a stock price has touched these areas, the more valid these levels are and the more important they becomes.
+
+* It is worth noting that the indexes follow some trend over the long run which could indicate that our trading strategy is appropriate.
+
+Parameters used for the model are:
+* signalEMA <- 20
+* slowEMA <- 90
+* volat.sd <- 60
+* m_ <- 2
+
+```{r, echo = F, warning = F, message = F}
+# here you can refer to the R codes that apply the strategy
+# for asset group 1 to all quarters (in a loop)
+
+source("apply_my_strategy_group1.R")
+```
+
+## Summary of results for **group 1**
+
+```{r, echo = F}
+names(quarter_stats.all.group1)[5] <- "av.daily.ntrades"
+column_spec(
+kable_styling(kable(quarter_stats.all.group1[, -2], 
+                    "html", 
+                    digits = 2,
+                    align = "r"),
+             font_size = 20),
+1:7, width = "30em")
+
+# more options here:
+# https://haozhu233.github.io/kableExtra/awesome_table_in_html.html
+```
+
+From the table we can see that the trading strategy applied performs well in seven quarters giving positive return and worse on the other.
+
+## PnL of results for **group 1** -- quarter 2019Q1
+
+```{r, echo = F, out.width ='100%'}
+knitr::include_graphics("pnl_group1_2019_Q1.png")
+
+```
+
+We can see negative returns here, possible cause a down movement of the indexes as Covid impact was negative.
+
+## PnL of results for **group 1** -- quarter 2019Q3
+
+```{r, echo = F, out.width ='100%'}
+knitr::include_graphics("pnl_group1_2019_Q3.png")
+
+```
+
+In Quarter 3rd 2019 we can see positive net and gross PnL.
+
+## PnL of results for **group 1** -- quarter 2019Q4
+
+```{r, echo = F, out.width ='100%'}
+knitr::include_graphics("pnl_group1_2019_Q4.png")
+
+```
+
+In Quarter 4th 2019 we can see negative returns, we end up with negative 15122.50 NET PnL.
+
+## PnL of results for **group 1** -- quarter 2020Q2
+
+```{r, echo = F, out.width ='100%'}
+knitr::include_graphics("pnl_group1_2020_Q2.png")
+
+```
+
+On Quarter2nd 2020 again we see negative NET PnL.
+
+## PnL of results for **group 1** -- quarter 2020Q4
+
+```{r, echo = F, out.width ='100%'}
+knitr::include_graphics("pnl_group1_2020_Q4.png")
+
+```
+
+## PnL of results for **group 1** -- quarter 2021Q1
+
+```{r, echo = F, out.width ='100%'}
+knitr::include_graphics("pnl_group1_2021_Q1.png")
+
+```
+
+
+## PnL of results for **group 1** -- quarter 2021Q2
+
+```{r, echo = F, out.width ='100%'}
+knitr::include_graphics("pnl_group1_2021_Q2.png")
+
+```
+
+## Finally selected strategy for **group 2**
+
+For **group 2** dataset contains the exchange rates of two currencies, respectively CAD (Canadian Dollar), AUD (Australian Dollar) and two commodities XAG (Silver), XAU (Gold). 
+
+Strategy used for our **group 2** assets was mean reverting strategy with two exponential moving averages.
+
+Parameters implemented:
+
+slowEMA -> 30
+fastEMA -> 120
+
+The advantage of the exponential moving average is that by being weighted to the most recent price changes, it responds more quickly to price changes than the SMA does.
+
+```{r, echo = F, warning = F, message = F}
+# here you can refer to the R codes that apply the strategy
+# for asset group 2 to all quarters (in a loop)
+
+source("apply_my_strategy_group2.R")
+```
+
+## Summary of results for **group 2**
+
+```{r, echo = F}
+names(quarter_stats.all.group2)[5] <- "av.ntrades"
+column_spec(
+kable_styling(kable(quarter_stats.all.group2[,-2], 
+                    "html", 
+                    digits = 2,
+                    align = "r"),
+             font_size = 20),
+1:7, width = "30em")
+
+# more options here:
+# https://haozhu233.github.io/kableExtra/awesome_table_in_html.html
+```
+
+Our summary is presented in the table above. We can see that we have higher gross and net returns on Quarter 4th 2019, Quarter 4th 2020, Quarter 2nd 2020 and Quarter 4th 2020, Q1st 2021 and Q2nd 2021. 
+
+## PnL of results for **group 2** -- quarter 2019Q1
+
+```{r, echo = F, out.width ='100%'}
+knitr::include_graphics("pnl_group2_2019_Q3.png")
+
+```
+
+During the this Quarter we can see that we take heavy losses applying our trading strategy, the losses trends to be higher as we progress throughout the quarter..
+
+## PnL of results for **group 2** -- quarter 2019Q3
+
+```{r, echo = F, out.width ='100%'}
+knitr::include_graphics("pnl_group2_2019_Q3.png")
+
+```
+
+Similar to the previous quarter we experience the same trend regarding losses.
+
+## PnL of results for **group 2** -- quarter 2019Q4
+
+```{r, echo = F, out.width ='100%'}
+knitr::include_graphics("pnl_group2_2019_Q4.png")
+
+```
+
+During this quarter we can see some profits from applying our strategy. We end up with net amount of 2006.69 of profits.
+
+## PnL of results for **group 2** -- quarter 2020Q2
+
+```{r, echo = F, out.width ='100%'}
+knitr::include_graphics("pnl_group2_2020_Q2.png")
+
+```
+
+This quarter shows also better returns, we start on lower returns on April 2020 and we peak on June 2020.
+
+## PnL of results for **group 2** -- quarter 2020Q4
+
+```{r, echo = F, out.width ='100%'}
+knitr::include_graphics("pnl_group2_2020_Q4.png")
+
+```
+
+## PnL of results for **group 2** -- quarter 2021Q1
+
+```{r, echo = F, out.width ='100%'}
+knitr::include_graphics("pnl_group2_2021_Q1.png")
+
+```
+
+## PnL of results for **group 2** -- quarter 2021Q2
+
+```{r, echo = F, out.width ='100%'}
+knitr::include_graphics("pnl_group2_2021_Q2.png")
+
+```
+
+## Conclusions
+
+As a conclusion we can say:
+
+* Mean Reverting Volatility Breakout Model proves to be a good trading strategy as we end up with a positive NET PnL on seven quarters.
+
+* Breakout trading is used by active investors to take a position within a trend's early stages.
+
+* Mean reverting with two exponential moving averages shows higher profits on our **group 2** assets. 
+
+* Overall we end positive on six quarters and negative on the other six quarters.

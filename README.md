@@ -1,13 +1,13 @@
 # Groups of assets
 The groups of assets include:
 <ol> Group 1 – two assets (1 min frequency, traded during NYSE sessions - on working days between 9:30 and 16:00 CET): </ol>
-SP – futures contract for S&P 500 index (transaction cost = 10$, point value = 50$).
-NQ – futures contract for NASDAQ index (transaction cost = 10$, point value = 20$).
-Group 2 – four assets (5 min frequency, traded almost 24 hours a day with 1 hour break betweem 17:00 and 18:00 CET - quotations start on Sundays at 18:00 and last until 17:00 on Friday): 
-CAD – futures contract for Canadian dollar (transaction cost = 5$, point value = 100000$).
-AUD – futures contract for Australian dollar (transaction cost = 5$, point value = 100000$).
-XAU – futures contract for gold (transaction cost = 10$, point value = 100$).
-XAG – futures contract for silver (transaction cost = 5$, point value = 5000$).
+<li> SP – futures contract for S&P 500 index (transaction cost = 10$, point value = 50$). </li>
+<li> NQ – futures contract for NASDAQ index (transaction cost = 10$, point value = 20$). </li>
+<ol> Group 2 – four assets (5 min frequency, traded almost 24 hours a day with 1 hour break betweem 17:00 and 18:00 CET - quotations start on Sundays at 18:00 and last until 17:00 on Friday): </ol>
+<li> CAD – futures contract for Canadian dollar (transaction cost = 5$, point value = 100000$). </li>
+<li> AUD – futures contract for Australian dollar (transaction cost = 5$, point value = 100000$). </li>
+<li> XAU – futures contract for gold (transaction cost = 10$, point value = 100$). </li>
+<li> XAG – futures contract for silver (transaction cost = 5$, point value = 5000$). </li>
 CAUTION: There are separate data files for group 1 and group 2 for each quarter.
 
 # Any combinations within groups allowed

@@ -1,4 +1,4 @@
-#Groups of assets
+# Groups of assets
 The groups of assets include:
 Group 1 – two assets (1 min frequency, traded during NYSE sessions - on working days between 9:30 and 16:00 CET): 
 SP – futures contract for S&P 500 index (transaction cost = 10$, point value = 50$).

@@ -1,6 +1,6 @@
 # Groups of assets
 The groups of assets include:
-Group 1 – two assets (1 min frequency, traded during NYSE sessions - on working days between 9:30 and 16:00 CET): 
+<ol> Group 1 – two assets (1 min frequency, traded during NYSE sessions - on working days between 9:30 and 16:00 CET): </ol>
 SP – futures contract for S&P 500 index (transaction cost = 10$, point value = 50$).
 NQ – futures contract for NASDAQ index (transaction cost = 10$, point value = 20$).
 Group 2 – four assets (5 min frequency, traded almost 24 hours a day with 1 hour break betweem 17:00 and 18:00 CET - quotations start on Sundays at 18:00 and last until 17:00 on Friday): 
